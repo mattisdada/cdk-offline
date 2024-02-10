@@ -1,8 +1,10 @@
-import { Hono } from "hono";
+import { Hono } from "hono/quick";
 import { serve } from "@hono/node-server";
 import { handle } from "hono/aws-lambda";
+import { logger } from "hono/logger";
 
 const app = new Hono();
+app.use(logger());
 
 console.log("Launch server.ts");
 

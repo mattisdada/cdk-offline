@@ -9,7 +9,7 @@ export class CdkOfflineStack extends cdk.Stack {
     super(scope, id, props);
 
     const fn = new NodejsFunction(this, "lambda", {
-      entry: "server.ts",
+      entry: "src/handler.ts",
       handler: "handler",
       runtime: lambda.Runtime.NODEJS_20_X,
     });
