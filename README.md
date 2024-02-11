@@ -1,7 +1,8 @@
 # cdk-offline
 
-A demo project showing the concept of `cdk-offline`. This could eventually become a real library / project. But I think
-it's simple enough to just include in a project as most of the heavy lifting is conceptual more-so than code.
+A demo showing the concept of `cdk-offline`. This could eventually become a real library / project. But I think
+it's simple enough to just include parts of this into a project as most of the heavy lifting is conceptual more-so than
+code.
 
 ![cdk-offline-demo](./docs/resources/cdk-offline-demo.gif)
 
