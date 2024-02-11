@@ -8,7 +8,13 @@ app.use(logger());
 
 console.log("Launch server.ts");
 
-app.get("/", (c) => c.json({ test: "Hello world" }));
+app.get("/", (c) => c.redirect(`/json`));
+app.get("/json", (c) => c.json({ test: "Hello world" }));
+app.get("/html", (c) => c.html(`<h1>Hello World</h1>`));
+app.get("/text", (c) => c.text(`Hello World`));
+app.get("/error", (c) => {
+  throw new Error("Unhandled exception");
+});
 
 const isLocal = process.env.IS_LOCAL === "true";
 
@@ -17,4 +23,4 @@ if (isLocal) {
     console.log(`Listening on http://localhost:${info.port}`); // Listening on http://localhost:3000
   });
 }
-export const handler = handle(app);
+export const httpHandler = handle(app);
