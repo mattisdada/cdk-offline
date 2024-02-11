@@ -45,6 +45,11 @@ it's simple enough to just include in a project as most of the heavy lifting is 
   - You could also remove `hono/logger` for an additional `1.2kb` size reduction
   - At this point, it's about `~16kb` after minification you may be needlessly optimising at this point, I'd focus on
     your own code / dependencies from here on out.
+- I want typechecking during offline builds
+  - If you want real-time typechecking you can add in `@jgoz/esbuild-plugin-typecheck` as a plugin into `offline.ts` (
+    install it first)
+  - If you do not run `tsc --noEmit` in your lint stage in CI, then I would recommend using this. Otherwise, IDE and
+    CI linting is probably sufficient
 
 ## How do I add this to my own CDK project?
 
