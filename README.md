@@ -35,8 +35,18 @@ it's simple enough to just include in a project as most of the heavy lifting is 
     limit yourself to one. But it will make the process a little bit more complicated. In my experience, there's only
     a limited amount of need to split http into distinct functions, so I would recommend starting with one and only
     expanding as needed.
+- I want the smallest possible bundle size
+  - Because the `@hono/node-server` is relatively chunky (`~10kb`), we can optimise the bundle by marking
+    the `@hono/node-server` as external in the cdk build options and using dynamic imports. We've built it in such a
+    way (and in the example) where you can do this easily.
+  - You can also swap from `hono/quick` to `hono/tiny` which will change from improved runtime performance to improved
+    bundle size. Which one makes a larger impact will likely depend on your workload. This will reduce bundle size
+    by `~12kb`
+  - You could also remove `hono/logger` for an additional `1.2kb` size reduction
+  - At this point, it's about `~16kb` after minification you may be needlessly optimising at this point, I'd focus on
+    your own code / dependencies from here on out.
 
-## How do I add this to my CDK project?
+## How do I add this to my own CDK project?
 
 1. Install required dependencies:
 

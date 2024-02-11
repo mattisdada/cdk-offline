@@ -4,7 +4,7 @@ export const outputFile = "./build/bundle.js";
 export const handlerEntryPoint = "./src/http-handler.ts";
 export const esbuildOptions: Partial<BuildOptions> = {
   entryPoints: [handlerEntryPoint],
-  minify: false,
+  minify: true,
   outfile: outputFile,
   bundle: true,
   loader: { ".ts": "ts" },

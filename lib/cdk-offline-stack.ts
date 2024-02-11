@@ -10,6 +10,7 @@ const bundleOptions: BundlingOptions = {
   loader: esbuildOptions.loader,
   minify: esbuildOptions.minify,
   sourceMap: !!esbuildOptions.sourcemap,
+  externalModules: ["@hono/node-server"],
 };
 
 export class CdkOfflineStack extends cdk.Stack {
@@ -21,6 +22,9 @@ export class CdkOfflineStack extends cdk.Stack {
       handler: "httpHandler",
       runtime: Runtime.NODEJS_20_X,
       bundling: bundleOptions,
+      environment: {
+        NODE_OPTIONS: "--enable-source-maps",
+      },
     });
 
     const fnUrl = fn.addFunctionUrl({
