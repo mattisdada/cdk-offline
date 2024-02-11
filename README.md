@@ -3,6 +3,8 @@
 A demo project showing the concept of `cdk-offline`. This could eventually become a real library / project. But I think
 it's simple enough to just include in a project as most of the heavy lifting is conceptual more-so than code.
 
+![cdk-offline-demo](./docs/resources/cdk-offline-demo.gif)
+
 ## How it works
 
 - Create a web server (using `hono` here) as the main way routing works for your application
