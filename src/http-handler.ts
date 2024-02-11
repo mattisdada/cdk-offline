@@ -22,7 +22,6 @@ app.get("/error", (c) => {
 export const httpHandler = handle(app);
 
 // Local
-
 if (isLocal) {
   (async () => {
     // Dynamic import, so we can easily exclude the `@hono/node-server` from our bundle in prod
