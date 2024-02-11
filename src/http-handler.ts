@@ -1,3 +1,5 @@
+import "source-map-support/register";
+
 import { Hono } from "hono/quick";
 import { serve } from "@hono/node-server";
 import { handle } from "hono/aws-lambda";
