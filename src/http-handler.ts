@@ -1,6 +1,8 @@
 import { Hono } from "hono/quick";
 import { handle } from "hono/aws-lambda";
 import { logger } from "hono/logger";
+import routeJson from "./routes/json";
+import routeNestedHtml from "./routes/nested/html";
 
 const app = new Hono();
 const isLocal = process.env.IS_LOCAL === "true";
@@ -12,8 +14,8 @@ console.log("Launch server.ts");
 
 // Routes
 app.get("/", (c) => c.redirect(`/json`));
-app.get("/json", (c) => c.json({ test: "Hello world" }));
-app.get("/html", (c) => c.html(`<h1>Hello World</h1>`));
+app.get("/json", routeJson);
+app.get("/nested/html", routeNestedHtml);
 app.get("/text", (c) => c.text(`Hello World`));
 app.get("/error", (c) => {
   throw new Error("Unhandled exception");

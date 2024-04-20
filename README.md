@@ -83,5 +83,3 @@ starting point, not the destination.
 - `npm run test` perform the jest unit tests
 - `npm run deploy` deploy this stack to your default AWS account/region
 - `npm run offline` run this http lambda cdk stack locally
-- `npx cdk diff` compare deployed stack with current state
-- `npx cdk synth` emits the synthesized CloudFormation template
