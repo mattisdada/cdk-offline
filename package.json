@@ -3,6 +3,7 @@
   "bin": {
     "cdk-offline": "bin/cdk-offline.js"
   },
+  "type": "module",
   "scripts": {
     "test": "jest",
     "deploy": "cdk deploy",
@@ -26,7 +27,9 @@
   },
   "dependencies": {
     "@hono/node-server": "^1.11.0",
-    "hono": "^4.2.5"
+    "@hono/zod-validator": "^0.2.1",
+    "hono": "^4.2.5",
+    "zod": "^3.22.5"
   },
   "volta": {
     "node": "20.12.2",

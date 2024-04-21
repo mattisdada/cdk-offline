@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "lib": ["es2023"],
-    "module": "node16",
+    "module": "nodenext",
     "target": "es2022",
     "declaration": true,
     "strict": true,
@@ -17,7 +17,11 @@
     "inlineSources": true,
     "strictPropertyInitialization": false,
     "forceConsistentCasingInFileNames": true,
-    "typeRoots": ["./node_modules/@types"]
+    "typeRoots": ["./node_modules/@types"],
+    "moduleResolution": "nodenext",
+    "esModuleInterop": true,
+    "verbatimModuleSyntax": true,
+    "allowSyntheticDefaultImports": true
   },
   "exclude": ["node_modules", "cdk.out"]
 }

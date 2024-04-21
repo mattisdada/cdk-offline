@@ -1,8 +1,10 @@
 import { Hono } from "hono/quick";
 import { handle } from "hono/aws-lambda";
 import { logger } from "hono/logger";
-import routeJson from "./routes/json";
-import routeNestedHtml from "./routes/nested/html";
+import { zValidator } from "@hono/zod-validator";
+import routeJson from "./routes/json.mjs";
+import routeNestedHtml from "./routes/nested/html.mjs";
+import { exampleZodSchema, routeNestedZod } from "./routes/nested/zod.mjs";
 
 const app = new Hono();
 const isLocal = process.env.IS_LOCAL === "true";
@@ -16,6 +18,7 @@ console.log("Launch server.ts");
 app.get("/", (c) => c.redirect(`/json`));
 app.get("/json", routeJson);
 app.get("/nested/html", routeNestedHtml);
+app.post("/nested/zod", zValidator("json", exampleZodSchema), routeNestedZod);
 app.get("/text", (c) => c.text(`Hello World`));
 app.get("/error", (c) => {
   throw new Error("Unhandled exception");

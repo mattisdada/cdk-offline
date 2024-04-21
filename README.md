@@ -9,7 +9,7 @@ code.
 ## How it works
 
 - Create a web server (using `hono` here) as the main way routing works for your application
-  - What about non-http events? They should still be added into the `http-handler.ts` but only in the `isLocal` branch
+  - What about non-http events? They should still be added into the `http-handler.mts` but only in the `isLocal` branch
     and is just useful for simulating an event. If you don't want that functionality, just treat them like normal and
     do not include them in the http handler
 - Create an `offline.ts`, this has a small script to facilitate:
@@ -66,12 +66,12 @@ npm i --save hono @hono/node-server
 2. Add the following to your `package.json` scripts
 
 ```json
-    "offline": "ts-node offline.ts"
+   "offline": "tsx offline.ts"
 ```
 
-3. Copy `src/http-handler.ts` to your project and modify the routes to bind to your functions handlers
+3. Copy `src/http-handler.mts` to your project and modify the routes to bind to your functions handlers
 4. Copy `esbuild.config.ts` to your project. It is recommended to pull in the esbuild options from this file into your
-   stack, see `lib/cdk-offline-stack.ts` for an example. You should also customise the esbuild config for your project (
+   stack, see `lib/cdk-offline-stack.mts` for an example. You should also customise the esbuild config for your project (
    defaults will be mostly fine)
 5. Should be done :) You can now test by running `npm run offline`
 

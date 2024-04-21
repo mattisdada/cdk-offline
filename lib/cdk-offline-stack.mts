@@ -1,8 +1,11 @@
 import * as cdk from "aws-cdk-lib";
 import { Construct } from "constructs";
 import { Runtime, FunctionUrlAuthType } from "aws-cdk-lib/aws-lambda";
-import { BundlingOptions, NodejsFunction } from "aws-cdk-lib/aws-lambda-nodejs";
-import { esbuildOptions } from "../esbuild.config";
+import {
+  type BundlingOptions,
+  NodejsFunction,
+} from "aws-cdk-lib/aws-lambda-nodejs";
+import { esbuildOptions } from "../esbuild.config.js";
 import { CfnOutput } from "aws-cdk-lib";
 
 const bundleOptions: BundlingOptions = {
@@ -18,7 +21,7 @@ export class CdkOfflineStack extends cdk.Stack {
     super(scope, id, props);
 
     const fn = new NodejsFunction(this, "httpFunction", {
-      entry: "src/http-handler.ts",
+      entry: "src/http-handler.mts",
       handler: "httpHandler",
       runtime: Runtime.NODEJS_20_X,
       bundling: bundleOptions,
