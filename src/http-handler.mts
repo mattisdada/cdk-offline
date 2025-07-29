@@ -6,13 +6,10 @@ import routeJson from "./routes/json.mjs";
 import routeNestedHtml from "./routes/nested/html.mjs";
 import { exampleZodSchema, routeNestedZod } from "./routes/nested/zod.mjs";
 
-const app = new Hono();
-const isLocal = process.env.IS_LOCAL === "true";
+export const app = new Hono();
 
 // Middleware
 app.use(logger());
-
-console.log("Launch server.ts");
 
 // Routes
 app.get("/", (c) => c.redirect(`/json`));
@@ -25,14 +22,3 @@ app.get("/error", (c) => {
 });
 
 export const httpHandler = handle(app);
-
-// Local
-if (isLocal) {
-  (async () => {
-    // Dynamic import, so we can easily exclude the `@hono/node-server` from our bundle in prod
-    const { serve } = await import("@hono/node-server");
-    serve(app, (info) => {
-      console.log(`Listening on http://localhost:${info.port}`); // Listening on http://localhost:3000
-    });
-  })();
-}

@@ -23,7 +23,7 @@ export class CdkOfflineStack extends cdk.Stack {
     const fn = new NodejsFunction(this, "httpFunction", {
       entry: "src/http-handler.mts",
       handler: "httpHandler",
-      runtime: Runtime.NODEJS_20_X,
+      runtime: Runtime.NODEJS_22_X,
       bundling: bundleOptions,
       environment: {
         NODE_OPTIONS: "--enable-source-maps",
