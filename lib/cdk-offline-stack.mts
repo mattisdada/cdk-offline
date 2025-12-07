@@ -1,12 +1,12 @@
 import * as cdk from "aws-cdk-lib";
-import { Construct } from "constructs";
-import { Runtime, FunctionUrlAuthType } from "aws-cdk-lib/aws-lambda";
+import { CfnOutput } from "aws-cdk-lib";
+import { FunctionUrlAuthType, Runtime } from "aws-cdk-lib/aws-lambda";
 import {
   type BundlingOptions,
   NodejsFunction,
 } from "aws-cdk-lib/aws-lambda-nodejs";
-import { esbuildOptions } from "../esbuild.config.js";
-import { CfnOutput } from "aws-cdk-lib";
+import type { Construct } from "constructs";
+import { esbuildOptions, handlerEntryPoint } from "../esbuild.config.js";
 
 const bundleOptions: BundlingOptions = {
   platform: esbuildOptions.platform,
@@ -21,9 +21,9 @@ export class CdkOfflineStack extends cdk.Stack {
     super(scope, id, props);
 
     const fn = new NodejsFunction(this, "httpFunction", {
-      entry: "src/http-handler.mts",
-      handler: "httpHandler",
-      runtime: Runtime.NODEJS_22_X,
+      entry: handlerEntryPoint,
+      handler: "apiHandler",
+      runtime: Runtime.NODEJS_24_X,
       bundling: bundleOptions,
       environment: {
         NODE_OPTIONS: "--enable-source-maps",
