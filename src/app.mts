@@ -19,3 +19,8 @@ app.get("/text", (c) => c.text(`Hello World`));
 app.get("/error", (_c) => {
   throw new Error("Unhandled exception");
 });
+
+app.onError((err, c) => {
+  console.error({ err });
+  return c.json({ message: "error" });
+});
